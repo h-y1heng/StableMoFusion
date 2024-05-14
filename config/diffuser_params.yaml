@@ -1,0 +1,27 @@
+dpmsolver:
+  scheduler_class: DPMSolverMultistepScheduler
+  additional_params:
+    algorithm_type: sde-dpmsolver++
+    use_karras_sigmas: true
+
+ddpm:
+  scheduler_class: DDPMScheduler
+  additional_params:
+    variance_type: fixed_small
+    clip_sample: false
+
+ddim:
+  scheduler_class: DDIMScheduler
+  additional_params:
+    clip_sample: false
+
+deis:
+  scheduler_class: DEISMultistepScheduler
+  additional_params:
+    num_train_timesteps: 1000
+    # use_karras_sigmas: true
+
+pndm:
+  scheduler_class: PNDMScheduler
+  additional_params:
+    num_train_timesteps: 1000

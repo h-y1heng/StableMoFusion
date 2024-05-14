@@ -1,0 +1,14 @@
+unit_length: 4
+max_text_len: 20
+text_enc_mod: bigru
+estimator_mod: bigru
+dim_text_hidden: 512
+dim_att_vec: 512
+dim_z: 128
+dim_movement_enc_hidden: 512
+dim_movement_dec_hidden: 512
+dim_movement_latent: 512
+dim_word: 300
+dim_pos_ohot: 15  
+dim_motion_hidden: 1024
+dim_coemb_hidden: 512
