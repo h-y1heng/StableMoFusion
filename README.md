@@ -13,10 +13,11 @@ The official PyTorch implementation of the paper [**"StableMoFusion: Towards Rob
 
 ## Get Start
 
-This code was tested on `NVIDIA GeForce RTX A100` and requires:
+This code was tested on `NVIDIA A100` and requires:
 
 * conda3 or miniconda3
-
+* python 3.8+
+* pytorch 3.10+
 
 
 a. Create a conda virtual environment and activate it.
