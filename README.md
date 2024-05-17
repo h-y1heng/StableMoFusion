@@ -1,12 +1,12 @@
 # StableMoFusion: Towards Robust and Efficient Diffusion-based Motion Generation Framework
 
-[![Project Page](https://img.shields.io/badge/Project_Page-<xxx>-<COLOR>.svg)](https://h-y1heng.github.io/StableMoFusion-page/)
-<!-- 
+<!-- [![Project Page](https://img.shields.io/badge/Project_Page-<xxx>-<COLOR>.svg)](https://h-y1heng.github.io/StableMoFusion-page/)
+
 [![Website](https://img.shields.io/badge/Website-Demo-fedcba?style=flat-square)](https://steve-zeyu-zhang.github.io/MotionMamba/) 
 [![arXiv](https://img.shields.io/badge/arXiv-2403.07487-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2403.07487) [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-555555?style=flat-square)](https://huggingface.co/papers/2403.07487)  -->
 
 
-The official PyTorch implementation of the paper [**"StableMoFusion: Towards Robust and Efficient Diffusion-based Motion Generation Framework"**](https://arxiv.org/abs/2405.05691).
+The official PyTorch implementation of the paper [**"StableMoFusion: Towards Robust and Efficient Diffusion-based Motion Generation Framework"**](https://arxiv.org/abs/2405.05691). [Project Page](https://h-y1heng.github.io/StableMoFusion-page/)
 
 <!-- StableMoFusion is a diffusion-based text-to-motion generation framework, -->
 
