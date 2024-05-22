@@ -54,7 +54,6 @@ class LayerNorm(nn.LayerNorm):
 
     def forward(self, x: torch.Tensor):
         if self.weight.dtype==torch.float32:
-
             orig_type = x.dtype
             ret = super().forward(x.type(torch.float32)) 
             return ret.type(orig_type)  
@@ -206,6 +205,10 @@ StableMoFusion
     │   ├── train_val.txt
     │   ├── train.txt
     │   └── val.txt
+    |── kit_mean.npy
+    |── kit_std.npy
+    |── t2m_mean.npy
+    |── t2m_std.npy
 ```
 
 ### 3. Train CondUnet1D Model
