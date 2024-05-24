@@ -55,7 +55,7 @@ def footskate_clean(pred_motions, opt, epoch, underpressure_model, model, JOINT_
     expanded_rotation_matrix = rotation_matrix.unsqueeze(0).repeat(nframes, 1, 1)
     pred_joints = torch.einsum('nij,nkj->nki', expanded_rotation_matrix, pred_joints)
     # Retargeting to UnderPressure skeleton
-    skeleton = Skeletons.all()[0]  # (23, 3)
+    skeleton = torch.load('./UnderPressure/dataset/S1_HoppingLeftFootRightFoot.pth')["skeleton"].view(23,3)
     angles, trajectory = retarget_to_underpressure(
         pred_joints,
         JOINT_NAMES,

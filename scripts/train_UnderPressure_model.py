@@ -7,7 +7,6 @@ import utils.paramUtil as paramUtil
 from models import vGRFmodel
 from UnderPressure import models, util, anim
 from UnderPressure.demo import retarget_to_underpressure
-from UnderPressure.skeletons import Skeletons
 from UnderPressure.data import TOPOLOGY
 from UnderPressure.metrics import MSLE
 from smplx import SMPLH
@@ -53,18 +52,12 @@ if __name__ == "__main__":
     parser.add_argument("--gpu_id", type=int, default=0, help='GPU id')
     opt = parser.parse_args()
     if opt.dataset_name == 't2m' or opt.dataset_name == 'humanml':
-        opt.data_root = './data/HumanML3D'
-        opt.motion_dir = pjoin(opt.data_root, 'new_joint_vecs')
-        opt.text_dir = pjoin(opt.data_root, 'texts.txt')
         opt.joints_num = 22
         opt.dim_pose = 263
         opt.max_motion_length = 196
         opt.radius = 4
         opt.fps = 20
     elif opt.dataset_name == 'kit':
-        opt.data_root = './data/KIT-ML'
-        opt.motion_dir = pjoin(opt.data_root, 'new_joint_vecs')
-        opt.text_dir = pjoin(opt.data_root, 'texts.txt')
         opt.joints_num = 21
         opt.dim_pose = 251
         opt.max_motion_length = 196
@@ -90,7 +83,7 @@ if __name__ == "__main__":
     checkpoints_dir = os.path.join(os.getcwd(), "checkpoints", "footskate")
     underpressure_model_path = os.path.join(checkpoints_dir, "underpressure_pretrained.tar")
     underpressure_model = models.DeepNetwork(state_dict=torch.load(underpressure_model_path)["model"]).to(device).eval()
-    skeleton = Skeletons.all()[0].to(device)
+    skeleton = skeleton = torch.load('./UnderPressure/dataset/S1_HoppingLeftFootRightFoot.pth')["skeleton"].view(23,3).to(device)
     # 3. load mogen model (transfer underpressure to other dataset)
     underpressure_mogen_model = vGRFmodel.DeepNetwork(joints_num=opt.joints_num).to(device)
     # 4. train underpressure_mogen
