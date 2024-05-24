@@ -1,12 +1,11 @@
 # StableMoFusion: Towards Robust and Efficient Diffusion-based Motion Generation Framework
 
 <!-- [![Project Page](https://img.shields.io/badge/Project_Page-<xxx>-<COLOR>.svg)](https://h-y1heng.github.io/StableMoFusion-page/)
-
 [![Website](https://img.shields.io/badge/Website-Demo-fedcba?style=flat-square)](https://steve-zeyu-zhang.github.io/MotionMamba/) 
 [![arXiv](https://img.shields.io/badge/arXiv-2403.07487-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2403.07487) [![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-555555?style=flat-square)](https://huggingface.co/papers/2403.07487)  -->
 
 
-The official PyTorch implementation of the paper [**"StableMoFusion: Towards Robust and Efficient Diffusion-based Motion Generation Framework"**](https://arxiv.org/abs/2405.05691). [Project Page](https://h-y1heng.github.io/StableMoFusion-page/)
+The official PyTorch implementation of the paper [**"StableMoFusion: Towards Robust and Efficient Diffusion-based Motion Generation Framework"**](https://arxiv.org/abs/).
 
 <!-- StableMoFusion is a diffusion-based text-to-motion generation framework, -->
 
@@ -54,6 +53,7 @@ class LayerNorm(nn.LayerNorm):
 
     def forward(self, x: torch.Tensor):
         if self.weight.dtype==torch.float32:
+
             orig_type = x.dtype
             ret = super().forward(x.type(torch.float32)) 
             return ret.type(orig_type)  
@@ -91,8 +91,7 @@ StableMoFusion
 StableMoFusion
 ├── UnderPressure
 │   ├── dataset
-│   |   |── S1
-│   |   |── S2
+│   |   |── S1_HoppingLeftFootRightFoot.pth
 │   |   └── ...
 │   ├── anim.py
 │   ├── data.py
@@ -126,7 +125,7 @@ python -m scripts.generate --num_samples 10
 * `--diffuser_name` sampler type in diffuser (e.g. 'ddpm','ddim','dpmsolver'), related settings see [./config/diffuser_params.yaml](config/diffuser_params.yaml)
 * `--num_inference_steps` number of iterative denoising steps during inference
 * `--seed` to sample different prompts.
-* `--motion_length`  in seconds .
+* `--motion_length`  in seconds 
 * `--opt_path` for loading model
 * `--footskate_cleanup` to use footskate module in the diffusion framework
 
@@ -250,19 +249,26 @@ python -m scripts.evaluation --opt_path ./checkpoints/kit/kit_condunet1d_batch64
 The evaluation results will be saved in `./checkpoints/kit/kit_condunet1d_batch64/eval`
 </details>
 
-### Train your own vGRF model for footskate cleanup
+### 5. Train your own vGRF model for footskate cleanup
 Download [smplh](http://mano.is.tue.mpg.de) to folder `./data/smplh` and run train_UnderPressure_model.py
 ```shell 
 python -m scripts.train_UnderPressure_model --dataset_name t2m
 ```
 </details>
 
+
+## Visualization in Mesh
+
+If you want to see the generated motions in mesh, as shown in the video below, we recommend you follow [MLD](https://github.com/ChenFengYe/motion-latent-diffusion#-visualization) to render mesh from our `.npy` file.
+
+![example](./assets/output.gif)
+
 ## Acknowledgments
 
 This code is standing on the shoulders of giants. We want to thank the following contributors
 that our code is based on:
 
-[text-to-motion](https://github.com/EricGuo5513/text-to-motion), [MDM](https://github.com/GuyTevet/motion-diffusion-model), [MotionDiffuse](https://github.com/mingyuan-zhang/MotionDiffuse), [GMD](https://github.com/korrawe/guided-motion-diffusion).
+[text-to-motion](https://github.com/EricGuo5513/text-to-motion), [MDM](https://github.com/GuyTevet/motion-diffusion-model), [MotionDiffuse](https://github.com/mingyuan-zhang/MotionDiffuse), [GMD](https://github.com/korrawe/guided-motion-diffusion), [MLD](https://github.com/ChenFengYe/motion-latent-diffusion#-visualization) and [UnderPressure](https://github.com/InterDigitalInc/UnderPressure/).
 
 ## License
 This code is distributed under an [MIT LICENSE](LICENSE).
