@@ -221,7 +221,7 @@ class Text2MotionDataset(data.Dataset):
 
 class HumanML3D(Text2MotionDataset):
     def __init__(self, opt, split="train", mode='train', accelerator=None):
-        self.data_root = '/data/yiheng_huang/data/HumanML3D'
+        self.data_root = './data/HumanML3D'
         self.min_motion_len = 40
         self.joints_num = 22
         self.dim_pose = 263
@@ -235,7 +235,7 @@ class HumanML3D(Text2MotionDataset):
 
 class KIT(Text2MotionDataset):
     def __init__(self, opt, split="train", mode='train', accelerator=None):
-        self.data_root = '/data/yiheng_huang/data/KIT-ML'
+        self.data_root = './data/KIT-ML'
         self.min_motion_len = 24
         self.joints_num = 21
         self.dim_pose = 251

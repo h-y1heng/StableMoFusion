@@ -147,5 +147,5 @@ if __name__ == "__main__":
                 kinematic_tree = paramUtil.t2m_kinematic_chain if (
                             opt.dataset_name == 't2m') else paramUtil.kit_kinematic_chain
                 plot_3d_motion(pjoin(checkpoints_dir, fname), kinematic_tree, positions, title="", fps=opt.fps,
-                               radius=opt.radius, label=labels)
+                               radius=opt.radius)
                 break
